@@ -1,0 +1,12 @@
+2026-03-08 21:11:08.853117 | arquivos\acompanhamento_vendas.xlsx movido para arquivos\Documentos 
+2026-03-08 21:11:08.853117 | arquivos\Artigo_cientifico.docx movido para arquivos\Documentos 
+2026-03-08 21:11:08.853117 | arquivos\betoneira.png movido para arquivos\Imagens 
+2026-03-08 21:11:08.853117 | arquivos\bomba_dagua.png movido para arquivos\Imagens 
+2026-03-08 21:11:08.853117 | arquivos\Carta-proposta.docx movido para arquivos\Documentos 
+2026-03-08 21:11:08.853117 | arquivos\contrato_da_empresa.pdf movido para arquivos\Documentos 
+2026-03-08 21:11:08.853117 | arquivos\Controle-de-Cheques.xlsx movido para arquivos\Documentos 
+2026-03-08 21:11:08.853117 | arquivos\EXEMPLO_ORCAMENTO_ANUAL_EMPRESARIAL2-1-1.xlsx movido para arquivos\Documentos 
+2026-03-08 21:11:08.853117 | arquivos\gatinho.png movido para arquivos\Imagens 
+2026-03-08 21:11:08.853117 | arquivos\relatorio_semanal.txt movido para arquivos\Documentos 
+2026-03-08 21:11:08.853117 | arquivos\wallpaper.jpg movido para arquivos\Imagens 
+2026-03-08 21:11:08.853117 | arquivos\wallpaper2.jpg movido para arquivos\Imagens 
