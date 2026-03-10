@@ -21,6 +21,12 @@ def descompactar_arquivo(arquivo_zip, pasta_organizada):
         diretorio_organizado.mkdir()
     shutil.unpack_archive(zip_desorganizado, diretorio_organizado)
 
+def registro_log(mensagem):
+    data_formatada = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+    with open('logs.txt', 'a', encoding='utf-8') as log:
+        log.write(f'{data_formatada} | {mensagem} \n')
+
+
 # organizar os arquivos
 def organizar_arquivo(organizador):
     contagem_de_movimentos = {}
@@ -45,28 +51,31 @@ def organizar_arquivo(organizador):
         subpasta = pasta_para_organizar / nome_categoria
         subpasta.mkdir(exist_ok=True, parents=True)
 
-        if subpasta.exists():
-            destino = subpasta / arquivo.name
-            if destino.exists():
-                print("Arquivo já existe")
-            else:
-                shutil.move(arquivo, destino)
-            data_formatada = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-            with open('logs.txt', 'a', encoding='utf-8') as log:
-                log.write(f'{data_formatada} | {arquivo} movido para {subpasta} \n')
-            if nome_categoria in contagem_de_movimentos:
-                contagem_de_movimentos[nome_categoria] +=1
-            else:
-                contagem_de_movimentos[nome_categoria] = 1    
-            print(f'Arquivo {arquivo.name} movido para {nome_categoria}')
+        destino = subpasta / arquivo.name
+        
+        if destino.exists():
+            print("Arquivo já existe")
+            continue
         else:
-            print(f'ERROR: Conflito o arquivo {arquivo} ja existe na pasta {nome_categoria}')
+            shutil.move(arquivo, destino)
+        data_formatada = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+        
+        registro_log(f'{arquivo} movido para {destino}')
+
+        if nome_categoria in contagem_de_movimentos:
+            contagem_de_movimentos[nome_categoria] +=1
+        else:
+            contagem_de_movimentos[nome_categoria] = 1    
+        print(f'Arquivo {arquivo.name} movido para {nome_categoria}')
     for categoria, total in contagem_de_movimentos.items():
         print(f'Foram movidos {total} arquivos para a pasta {categoria}')            
 
-descompactar_arquivo('organizador.zip', 'arquivos')
-organizar_arquivo('arquivos')
-print('Concluido com sucesso')
+def main():
+    descompactar_arquivo('organizador.zip', 'arquivos')
+    organizar_arquivo('arquivos')
+    print('Concluido com sucesso')
+
+main()
 
 
 
