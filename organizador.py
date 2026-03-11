@@ -18,9 +18,13 @@ def descompactar_arquivo(arquivo_zip, pasta_organizada):
         return
     print(f'Extraindo o arquivo {zip_desorganizado}')
     if not diretorio_organizado.exists():
-        diretorio_organizado.mkdir()
-    shutil.unpack_archive(zip_desorganizado, diretorio_organizado)
+        diretorio_organizado.mkdir(exist_ok=True)
+    try:
+        shutil.unpack_archive(zip_desorganizado, diretorio_organizado)
+    except Exception as erro:
+        print(f'Arquivo corrompido {erro}')
 
+# registro de log
 def registro_log(mensagem):
     data_formatada = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
     with open('logs.txt', 'a', encoding='utf-8') as log:
@@ -58,7 +62,6 @@ def organizar_arquivo(organizador):
             continue
         else:
             shutil.move(arquivo, destino)
-        data_formatada = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
         
         registro_log(f'{arquivo} movido para {destino}')
 
@@ -75,7 +78,8 @@ def main():
     organizar_arquivo('arquivos')
     print('Concluido com sucesso')
 
-main()
+if __name__ == "__main__":
+    main()
 
 
 
