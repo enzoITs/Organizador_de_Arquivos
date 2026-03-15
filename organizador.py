@@ -9,21 +9,6 @@ mapa_extensao = {
     "Executaveis": [".exe", ".msi", ".sh"],
 }
 
-# extrair o arquivo zip
-def descompactar_arquivo(arquivo_zip, pasta_organizada):
-    diretorio_organizado = Path(pasta_organizada)
-    zip_desorganizado = Path(arquivo_zip)
-    if not zip_desorganizado.exists():
-        print('Arquivo Zip não existe!')
-        return
-    print(f'Extraindo o arquivo {zip_desorganizado}')
-    if not diretorio_organizado.exists():
-        diretorio_organizado.mkdir(exist_ok=True)
-    try:
-        shutil.unpack_archive(zip_desorganizado, diretorio_organizado)
-    except Exception as erro:
-        print(f'Arquivo corrompido {erro}')
-
 # registro de log
 def registro_log(mensagem):
     data_formatada = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
@@ -74,7 +59,6 @@ def organizar_arquivo(organizador):
         print(f'Foram movidos {total} arquivos para a pasta {categoria}')            
 
 def main():
-    descompactar_arquivo('organizador.zip', 'arquivos')
     organizar_arquivo('arquivos')
     print('Concluido com sucesso')
 
