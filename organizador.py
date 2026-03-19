@@ -5,7 +5,6 @@ import customtkinter as ctk
 from tkinter import filedialog
 
 ctk.set_appearance_mode('dark')
-
 app = ctk.CTk()
 app.title('Sistema de Organização')
 app.geometry('500x500')
